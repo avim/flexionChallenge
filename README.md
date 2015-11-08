@@ -1,8 +1,7 @@
 # flexionChallenge
 
 #### Java developer – Integration team - Developer test
-
-
+Implementation of a billing Integration that connects to the Flexion platform.
 
 ##### Developement
 
