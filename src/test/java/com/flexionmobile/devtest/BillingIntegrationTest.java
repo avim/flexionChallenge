@@ -19,11 +19,10 @@ public class BillingIntegrationTest extends TestCase {
 
     public void testGetPurchases() throws Exception {
         BillingIntegration billingIntegration = new BillingIntegration("avim");
+        int sizeBefore = billingIntegration.getPurchases().size();
         billingIntegration.buy("item456");
         List<Purchase> purchaseList = billingIntegration.getPurchases();
-        Assert.assertTrue(purchaseList.stream()
-                .filter(purchase -> "item456".equals(purchase.getItemId()))
-                .findAny().isPresent());
+        Assert.assertEquals(sizeBefore + 1, purchaseList.size());
     }
 
     public void testConsume() throws Exception {
