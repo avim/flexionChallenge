@@ -23,21 +23,30 @@ public class BillingIntegration implements Integration {
     }
 
     /**
+     * Buy Item
+     * Call this method to buy one item. Items can be bought multiple times
+     *
      * @param itemId
-     * @return
+     * @return Purchase
      */
     public Purchase buy(String itemId) {
         return restAPIService.buy(itemId, developerId);
     }
 
     /**
-     * @return
+     * Get All Purchases
+     * Call this method to retrieve all previous purchases
+     *
+     * @return List<Purchase>
      */
     public List<Purchase> getPurchases() {
         return restAPIService.getPurchases(developerId);
     }
 
     /**
+     * Consume purchase
+     * Call this method to consume one purchase.
+     *
      * @param purchase
      */
     public void consume(Purchase purchase) {

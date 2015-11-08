@@ -28,9 +28,12 @@ public class RestAPIService {
     }
 
     /**
+     * Buy Item
+     * Call this method to buy one item. Items can be bought multiple times
+     *
      * @param itemId
      * @param developerId
-     * @return
+     * @return Purchase
      */
     public Purchase buy(String itemId, String developerId) {
         WebTarget target = this.client.target(BASE_URL)
@@ -46,8 +49,11 @@ public class RestAPIService {
     }
 
     /**
+     * Get All Purchases
+     * Call this method to retrieve all previous purchases
+     *
      * @param developerId
-     * @return
+     * @return List<Purchase>
      */
     public List<Purchase> getPurchases(String developerId) {
         List purchases = new ArrayList();
@@ -60,6 +66,7 @@ public class RestAPIService {
             throw new RuntimeException("Error occurred on server: " + response.getStatus());
         }
 
+        // TODO Avim: Check if there are a simpler way of doing this
         JSONObject obj = new JSONObject(response.readEntity(String.class));
         JSONArray array = obj.getJSONArray("purchases");
         for (int i = 0; i < array.length(); i++) {
@@ -74,6 +81,9 @@ public class RestAPIService {
     }
 
     /**
+     * Consume purchase
+     * Call this method to consume one purchase.
+     *
      * @param purchaseId
      * @param developerId
      */
