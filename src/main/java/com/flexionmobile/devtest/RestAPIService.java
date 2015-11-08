@@ -64,9 +64,9 @@ public class RestAPIService {
         JSONArray array = obj.getJSONArray("purchases");
         for (int i = 0; i < array.length(); i++) {
             purchases.add(new PurchaseImpl(
-                            array.getJSONObject(0).getString("id"),
-                            Boolean.getBoolean(array.getJSONObject(0).getString("consumed")),
-                            array.getJSONObject(0).getString("itemId"))
+                            array.getJSONObject(i).getString("id"),
+                            Boolean.parseBoolean(array.getJSONObject(i).getString("consumed")),
+                            array.getJSONObject(i).getString("itemId"))
             );
         }
 
